@@ -1,0 +1,89 @@
+[Dương] ====================================================================================================
+enable
+configure terminal
+
+! --- 1. BASE CONFIG & HOSTNAME ---
+hostname WAN-R2-96
+no ip domain-lookup
+ip domain-name hcmut.edu.vn
+service password-encryption
+enable secret Class@96!
+banner motd ^C
+================================================================
+ WARNING: UNAUTHORIZED ACCESS TO WAN-R2-96 IS STRICTLY PROHIBITED
+ Core Architect: Nguyen Anh Duong - Student ID: 2310596
+================================================================
+^C
+
+! --- 2. SSHv2 & LOCAL AAA SECURITY ---
+username admin_96 privilege 15 secret Admin@96!
+crypto key generate rsa general-keys modulus 2048
+ip ssh version 2
+ip ssh time-out 60
+ip ssh authentication-retries 3
+
+ip access-list standard ACL-MGMT-VTY-96
+ permit 10.96.99.0 0.0.0.255
+ permit 10.96.30.0 0.0.0.255
+ permit 10.96.254.0 0.0.0.255
+ deny any log
+
+line console 0
+ logging synchronous
+ exec-timeout 15 0
+ login local
+line vty 0 4
+ logging synchronous
+ exec-timeout 10 0
+ access-class ACL-MGMT-VTY-96 in
+ transport input ssh
+ login local
+
+! --- 3. INTERFACES & IP ADDRESSING (VLSM /30) ---
+interface Loopback0
+ description --- OSPF RID & MGMT LOOPBACK ---
+ ip address 10.96.254.2 255.255.255.255
+
+interface GigabitEthernet0/0
+ description --- WAN UPLINK TO INTERNET CLOUD (NAT0) ---
+ ip address dhcp
+ ip nat outside
+ no shutdown
+
+interface GigabitEthernet0/1
+ description --- L3 LINK TO DSW2-96 (e0/1) ---
+ ip address 10.96.255.9 255.255.255.252
+ ip nat inside
+ ip ospf network point-to-point
+ no shutdown
+
+interface GigabitEthernet0/2
+ description --- L3 LINK TO DSW1-96 (e0/1) ---
+ ip address 10.96.255.13 255.255.255.252
+ ip nat inside
+ ip ospf network point-to-point
+ no shutdown
+
+interface GigabitEthernet0/3
+ description --- UNUSED PORT ---
+ shutdown
+
+! --- 4. OSPF PROCESS 96 (AREA 0 - BACKUP METRIC 50) ---
+router ospf 96
+ router-id 10.96.254.2
+ passive-interface GigabitEthernet0/0
+ passive-interface Loopback0
+ network 10.96.254.2 0.0.0.0 area 0
+ network 10.96.255.8 0.0.0.3 area 0
+ network 10.96.255.12 0.0.0.3 area 0
+ default-information originate always metric 50 metric-type 1
+
+! --- 5. NAT OVERLOAD (PAT) ---
+ip access-list standard ACL-NAT-INTERNAL-96
+ permit 10.96.0.0 0.0.255.255
+
+ip nat inside source list ACL-NAT-INTERNAL-96 interface GigabitEthernet0/0 overload
+
+end
+write memory
+[Dương] ====================================================================================================

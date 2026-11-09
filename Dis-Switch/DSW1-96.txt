@@ -1,0 +1,35 @@
+[Dương] ====================================================================================================
+enable
+configure terminal
+hostname DSW1-96
+ip routing
+
+
+interface Loopback0
+ ip address 10.96.254.3 255.255.255.255
+interface Ethernet0/0
+ description --- L3 UPLINK TO WAN-R1-96 (Gi0/1) ---
+ no switchport
+ ip address 10.96.255.2 255.255.255.252
+ ip ospf network point-to-point
+ no shutdown
+interface Ethernet0/1
+ description --- L3 UPLINK TO WAN-R2-96 (Gi0/2) ---
+ no switchport
+ ip address 10.96.255.14 255.255.255.252
+ ip ospf network point-to-point
+ no shutdown
+
+
+router ospf 96
+ router-id 10.96.254.3
+ network 10.96.254.3 0.0.0.0 area 0
+ network 10.96.255.0 0.0.0.3 area 0
+ network 10.96.255.12 0.0.0.3 area 0
+ network 10.96.10.0 0.0.0.255 area 0
+ network 10.96.20.0 0.0.0.255 area 0
+ network 10.96.30.0 0.0.0.255 area 0
+ network 10.96.99.0 0.0.0.255 area 0
+end
+write memory
+[Dương] ====================================================================================================
