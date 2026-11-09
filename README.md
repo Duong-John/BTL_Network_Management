@@ -1,6 +1,6 @@
 # Bài tập lớn 1 Quản trị Mạng
 ## Topology:
-!(Topology)[Images/Topology.png]
+![Topology](Images/Topology.png)
 ## Thành viên - Nhiệm vụ:
 1. Dương:
 - [x] Thiết kế Topology trên GNS3 Server (IOU L2/L3, Ubuntu 22.04).
