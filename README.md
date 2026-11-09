@@ -2,6 +2,7 @@
 ## Topology:
 ![Topology](Images/Topology.png)
 ## Thành viên - Nhiệm vụ:
+> Note: Project folder là 'BTL_v0'
 1. Dương:
 - [x] Thiết kế Topology trên GNS3 Server (IOU L2/L3, Ubuntu 22.04).
 - [x] Quy hoạch bảng IPAM/VLSM chi tiết cho dải 10.96.0.0/16 (VLAN 10, 20, 30, 99 + các subnet /30 P2P).
@@ -13,7 +14,6 @@
 ...
 4. Kiên
 ...
-
 ## Quy hoạch IPAM - VLSM:
 [IPAM - VLMS](Docs/ipam_vlsm_subnetting_plan.md)
 
