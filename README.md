@@ -18,9 +18,9 @@
 
 3. Nghĩa
 - [x] Phụ trách cặp Multilayer Switch (SW-D1-96, SW-D2-96) và đường High-Speed EtherChannel LACP nối giữa chúng.
-- [ ] Cấu hình SVI Inter-VLAN Routing (10, 20, 30, 99) và OSPF nối lên 2 Border Router.
-- [ ] Cấu hình HSRP Group 96 (VIP .254) chia tải chéo (D1 Active VLAN 10, 99; D2 Active VLAN 20, 30) kèm preempt & Interface Tracking.
-- [ ] Cấu hình RSTP Root Bridge Primary/Secondary đồng bộ với HSRP và bật Root Guard.
+- [x] Cấu hình SVI Inter-VLAN Routing (10, 20, 30, 99) và OSPF nối lên 2 Border Router.
+- [x] Cấu hình HSRP Group 96 (VIP .254) chia tải chéo (D1 Active VLAN 10, 99; D2 Active VLAN 20, 30) kèm preempt & Interface Tracking.
+- [x] Cấu hình RSTP Root Bridge Primary/Secondary đồng bộ với HSRP và bật Root Guard.
 
 4. Kiên
 - [x] Phụ trách các máy trạm PC (VLAN 10, 20) và 3 máy chủ Ubuntu (VLAN 30) ở mức kết nối mạng cơ bản.
