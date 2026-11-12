@@ -12,7 +12,7 @@
 2. Huy
 - [x] Phụ trách 4 Switch Access (SW-A1-96 đến SW-A4-96).
 - [ ] Cấu hình VLAN 10, 20, 30, 99, Trunking 802.1Q, đồng bộ Native VLAN.
-- [ ] Cấu hình EtherChannel LACP (mode active) cho các đường Uplink kép.
+- ~~[ ] Cấu hình EtherChannel LACP (mode active) cho các đường Uplink kép.~~
 - [ ] Kích hoạt PortFast & BPDU Guard trên các cổng nối PC/Server.
 - [ ] Vẽ sơ đồ cây RSTP (Root/Designated/Alternate Port) cho báo cáo.
 
