@@ -118,5 +118,9 @@ interface Port-channel 1
  switchport trunk encapsulation dot1q
  switchport mode trunk
  switchport trunk allowed vlan 10,20,30,99
+
+! --- K. UPDATE USE-BIA TO USE REAL PHYSICAL MAC ADDR DUE TO BUG
+interface range Vlan10, Vlan20, Vlan30, Vlan99
+ standby use-bia
  
 write memory
