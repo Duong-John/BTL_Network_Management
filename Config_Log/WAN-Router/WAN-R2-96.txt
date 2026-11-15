@@ -7,7 +7,7 @@ hostname WAN-R2-96
 no ip domain-lookup
 ip domain-name hcmut.edu.vn
 service password-encryption
-enable secret Class@96!
+enable secret Pass_96@CO3151
 banner motd ^C
 ================================================================
  WARNING: UNAUTHORIZED ACCESS TO WAN-R2-96 IS STRICTLY PROHIBITED
@@ -16,7 +16,7 @@ banner motd ^C
 ^C
 
 ! --- 2. SSHv2 & LOCAL AAA SECURITY ---
-username admin_96 privilege 15 secret Admin@96!
+username admin_96 privilege 15 secret Pass_96@CO3151
 crypto key generate rsa general-keys modulus 2048
 ip ssh version 2
 ip ssh time-out 60
