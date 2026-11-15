@@ -1,4 +1,4 @@
-# Bài tập lớn - Quản trị Mạng
+# Bài tập lớn - Quản trị Mạng (Network Management Project)
 ## Bài tập lớn 1:
 Thiết kế và triển khai hạ tầng mạng Doanh nghiệp dự phòng cao. Mục tiêu hướng đến xây dựng hạ tầng mạng mô hình 3 lớp (Core, Distribution, Access) bền vững, loại bỏ các điểm lỗi đơn lẻ. Các nội dụng chính cần thực hiện bao gồm: Quy hoạch vùng địa chỉ IPAM sử dụng kỹ thuật VLSM và phân vùng VLAN/Inter, VLAN Routing. Cấu hình dự phòng Lớp 2: RSTP (chống bão Broadcast) và EtherChannel (LACP) gộp kênh băng thông. Cấu hình dự phòng Lớp 3 Gateway: HSRP hoặc VRRP với cơ chế chia tải chéo 
 (Active/Standby Load Balancing) giữa các VLAN.
