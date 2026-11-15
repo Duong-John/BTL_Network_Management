@@ -1,0 +1,5 @@
+! --- PC3-ENG (VPCS) | ASW1-96 Ethernet2/1 | VLAN 20 ---
+set pcname PC3-ENG
+ip 10.96.20.11/24 10.96.20.254
+ip dns 8.8.8.8
+save

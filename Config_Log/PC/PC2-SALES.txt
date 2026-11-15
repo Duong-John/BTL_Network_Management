@@ -1,0 +1,5 @@
+! --- PC2-SALES (VPCS) | ASW2-96 Ethernet2/0 | VLAN 10 ---
+set pcname PC2-SALES
+ip 10.96.10.12/24 10.96.10.254
+ip dns 8.8.8.8
+save

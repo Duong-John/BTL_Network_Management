@@ -1,0 +1,36 @@
+# --- SRV-RADIUS-96 (Ubuntu 22.04) | ens3 -> ASW3-96 Ethernet2/1 | ens4 -> ASW4-96 Ethernet2/1 | VLAN 30 ---
+# --- A. HOSTNAME & DON FILE NETPLAN CU ---
+sudo hostnamectl set-hostname SRV-RADIUS-96
+sudo mkdir -p /root/netplan.bak
+sudo mv /etc/netplan/*.yaml /root/netplan.bak/
+
+# --- B. BONDING ACTIVE-BACKUP: sudo nano /etc/netplan/01-bond0.yaml ---
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens3: {}
+    ens4: {}
+  bonds:
+    bond0:
+      macaddress: 02:96:30:00:00:20   
+      interfaces: [ens3, ens4]
+      addresses: [10.96.30.20/24]
+      routes:
+        - to: default
+          via: 10.96.30.254
+      nameservers:
+        addresses: [8.8.8.8, 1.1.1.1]
+      parameters:
+        mode: active-backup
+        primary: ens3
+        mii-monitor-interval: 100
+
+# --- C. AP DUNG ---
+sudo chmod 600 /etc/netplan/01-bond0.yaml
+sudo netplan apply
+
+# --- D. KIEM TRA ---
+cat /proc/net/bonding/bond0
+ip -br addr show bond0
+ping -c 3 10.96.30.254

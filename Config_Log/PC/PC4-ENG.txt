@@ -1,0 +1,5 @@
+! --- PC4-ENG (VPCS) | ASW2-96 Ethernet2/1 | VLAN 20 ---
+set pcname PC4-ENG
+ip 10.96.20.12/24 10.96.20.254
+ip dns 8.8.8.8
+save
