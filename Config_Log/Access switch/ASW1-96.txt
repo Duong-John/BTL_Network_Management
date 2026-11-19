@@ -8,8 +8,14 @@ configure terminal
 hostname ASW1-96
 no ip domain-lookup
 no ip routing
-enable secret Pass_96@CO3151
 service password-encryption
+enable secret Pass_96@CO3151
+username admin_96 privilege 1 secret Pass_96@CO3151
+line console 0
+no privilege level 15
+login local
+logging synchronous
+exit
 
 ! ===========================
 ! VLAN CONFIGURATION
